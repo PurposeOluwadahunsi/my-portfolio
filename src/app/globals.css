@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Purpose AI — Design Token Layer (Sprint 1)
+ *
+ * A refined, dark-first palette. No bright saturated colors — every hue
+ * here is desaturated and low-contrast against its neighbors on purpose,
+ * so nothing fights for attention. Accent is a muted blue-violet used
+ * sparingly (links, focus rings, primary actions, gradient text).
+ */
+@layer base {
+  :root {
+    /* ---- Radius scale ---- */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.625rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* ---- Elevation / shadow scale ----
+       Extremely subtle — premium dark UIs read depth mostly through
+       border + background-layering, not heavy drop shadows. */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.35);
+    --shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.45);
+    --shadow-glow: 0 0 40px -8px hsl(var(--accent) / 0.35);
+
+    /* ---- Blur values (glass panel) ---- */
+    --blur-sm: 8px;
+    --blur-md: 16px;
+    --blur-lg: 24px;
+
+    /* ---- Layout ---- */
+    --container-padding: 1.25rem;
+    --container-padding-md: 2rem;
+    --container-padding-lg: 3rem;
+    --container-max: 1200px;
+
+    /* ---- Transition curves ----
+       standard: general UI motion. decelerate: entrances.
+       accelerate: exits. spring-ish: interactive/hover. */
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+    --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ---- Durations ---- */
+    --duration-fast: 150ms;
+    --duration-base: 300ms;
+    --duration-slow: 600ms;
+  }
+
+  /* Dark is the default (un-themed root = dark palette). */
+  :root,
+  .dark {
+    --background: 240 6% 6%;
+    --background-secondary: 240 6% 8%;
+    --foreground: 0 0% 97%;
+
+    --card: 240 6% 9%;
+    --card-foreground: 0 0% 97%;
+
+    --popover: 240 6% 9%;
+    --popover-foreground: 0 0% 97%;
+
+    --primary: 0 0% 97%;
+    --primary-foreground: 240 6% 9%;
+
+    --secondary: 240 5% 14%;
+    --secondary-foreground: 0 0% 97%;
+
+    --muted: 240 5% 13%;
+    --muted-foreground: 240 4% 60%;
+
+    --accent: 221 45% 64%;
+    --accent-foreground: 240 6% 9%;
+
+    --success: 142 35% 52%;
+    --success-foreground: 0 0% 97%;
+
+    --warning: 38 55% 55%;
+    --warning-foreground: 240 6% 9%;
+
+    --destructive: 0 45% 55%;
+    --destructive-foreground: 0 0% 97%;
+
+    --border: 240 5% 16%;
+    --border-hover: 240 5% 22%;
+    --input: 240 5% 16%;
+    --ring: 221 45% 64%;
+
+    --selection: 221 45% 64%;
+  }
+
+  /* Light mode — structurally complete, refined to match the same
+     restrained philosophy. Not the primary experience yet. */
+  .light {
+    --background: 0 0% 100%;
+    --background-secondary: 240 20% 99%;
+    --foreground: 240 6% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 6% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 10%;
+
+    --primary: 240 6% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 10% 96%;
+    --secondary-foreground: 240 6% 10%;
+
+    --muted: 240 10% 96%;
+    --muted-foreground: 240 4% 40%;
+
+    --accent: 221 45% 48%;
+    --accent-foreground: 0 0% 98%;
+
+    --success: 142 35% 38%;
+    --success-foreground: 0 0% 98%;
+
+    --warning: 38 55% 42%;
+    --warning-foreground: 0 0% 98%;
+
+    --destructive: 0 55% 48%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 90%;
+    --border-hover: 240 10% 82%;
+    --input: 240 10% 90%;
+    --ring: 221 45% 48%;
+
+    --selection: 221 45% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  ::selection {
+    background-color: hsl(var(--selection) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background-color: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 50;
+    border-radius: var(--radius-md);
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.5rem 1rem;
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .footer-link {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+
+  .footer-link:hover {
+    color: hsl(var(--foreground));
+  }
+    .hero-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, black 40%, transparent 90%);
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 55% at 50% 30%,
+      black 40%,
+      transparent 90%
+    );
+  }
+ 
+  .hero-glow {
+    width: 560px;
+    height: 560px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, hsl(var(--accent) / 0.16) 0%, transparent 70%);
+    filter: blur(60px);
+  }
+ 
+  .hero-noise {
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+ 
+  .hero-name {
+    display: inline-block;
+    transition: text-shadow var(--duration-base) var(--ease-standard);
+  }
+ 
+  .hero-name:hover {
+    text-shadow: 0 0 44px hsl(var(--accent) / 0.35);
+  }
+  .hero-visual-placeholder {
+    background:
+      linear-gradient(135deg, hsl(var(--accent) / 0.08), transparent 60%),
+      hsl(var(--secondary));
+  }
+ 
+
+}
