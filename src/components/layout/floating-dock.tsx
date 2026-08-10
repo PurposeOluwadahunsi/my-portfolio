@@ -26,7 +26,7 @@ export function FloatingDock() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: reducedMotion ? 0 : 0.4 }}
-      className="fixed inset-x-0 bottom-6 z-30 flex justify-center px-4"
+      className="fixed inset-x-0 bottom-2 z-30 flex justify-center px-4"
     >
       <div className="no-scrollbar flex max-w-full items-center gap-1 overflow-x-auto rounded-full border border-border bg-card/90 px-2 py-2 shadow-lg backdrop-blur-md">
         {navItems.map((item) => (
