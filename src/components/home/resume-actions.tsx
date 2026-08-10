@@ -1,6 +1,6 @@
 import { Download, FileText } from "lucide-react";
 
-const resumePath = "/resume/Purpose-Oluwadahunsi-Resume.pdf";
+export const resumePath = "/resume/Purpose-Oluwadahunsi-Resume.pdf";
 
 export function ResumeActions() {
   return (

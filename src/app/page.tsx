@@ -6,6 +6,7 @@ import { ContactSection } from "@/components/home/contact-section";
 import { ChatModalProvider } from "@/providers/chat-modal-provider";
 import { ChatModal } from "@/components/chatbot/chat-modal";
 import { FloatingChatButton } from "@/components/chatbot/floating-chat-button";
+import { FloatingDock } from "@/components/layout/floating-dock";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <JourneySection />
       <ContactSection />
       <FloatingChatButton />
+      <FloatingDock />
       <ChatModal />
     </ChatModalProvider>
   );
