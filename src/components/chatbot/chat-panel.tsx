@@ -52,8 +52,9 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
       <div className="flex-1 space-y-4 overflow-y-auto p-4">
         {messages.length === 0 ? (
           <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
-            <p className="text-body-sm text-muted-foreground">
-              Ask me anything about Purpose, his projects, or how he builds AI products.
+            <p className="text-body font-semibold text-foreground">Ask me about Purpose.</p>
+            <p className="max-w-xs text-body-sm text-muted-foreground">
+              I know about his projects, experience, skills, and what he's building right now.
             </p>
             <SuggestedPrompts onSelect={sendMessage} />
           </div>

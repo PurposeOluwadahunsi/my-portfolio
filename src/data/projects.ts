@@ -64,7 +64,7 @@ export const projects: CaseStudyProject[] = [
       "Still early here, this project is more about the problem space (agricultural AI) than a finished build yet.",
     stack: ["Python", "Machine Learning"],
     featured: false,
-    imagePlaceholderLabel: "AgroPulse AI is still in development — replace with a real screenshot once available",
+    imagePlaceholderLabel: "AgroPulse AI is still in development",
     links: [],
   },
 ];

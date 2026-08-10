@@ -1,11 +1,18 @@
 import { Logo } from "@/components/shared/logo";
 import { Container } from "@/components/ui/container";
-import { navItems } from "@/constants/navigation";
+import { resumePath } from "@/components/home/resume-actions";
 import { siteConfig } from "@/constants/site";
+
+const footerLinks = [
+  { label: "Home", href: "#hero" },
+  { label: "Projects", href: "#projects" },
+  { label: "Journey", href: "#journey" },
+  { label: "Resume", href: resumePath, external: true },
+  { label: "Contact", href: "#contact" },
+];
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const visibleItems = navItems.filter((item) => !item.comingSoon);
 
   return (
     <footer className="border-t border-border">
@@ -18,9 +25,15 @@ export function Footer() {
         </div>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
-          {visibleItems.map((item) => (
-            <a key={item.href} href={item.href} className="footer-link">
-              {item.label}
+          {footerLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              className="text-body-sm text-muted-foreground transition-colors duration-fast hover:text-foreground"
+            >
+              {link.label}
             </a>
           ))}
         </nav>

@@ -8,10 +8,6 @@ import { ChatPanel } from "@/components/chatbot/chat-panel";
 import { useChatModal } from "@/providers/chat-modal-provider";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
-// Desktop: docks bottom-right, near the launcher. Mobile: slides up
-// as a full-width bottom sheet. Portaled to document.body for the
-// same reason mobile-nav.tsx is — avoids any ancestor filter/backdrop
-// breaking position:fixed.
 export function ChatModal() {
   const { open, close } = useChatModal();
   const reducedMotion = useReducedMotion();
@@ -52,11 +48,18 @@ export function ChatModal() {
             role="dialog"
             aria-modal="true"
             aria-label="Chat with Purpose AI"
-            className="fixed inset-x-0 bottom-0 z-50 h-[85vh] w-full overflow-hidden rounded-t-3xl border border-border bg-card sm:inset-x-auto sm:bottom-6 sm:right-6 sm:h-[600px] sm:w-[400px] sm:rounded-2xl sm:shadow-lg"
-            initial={reducedMotion ? { opacity: 0 } : { y: "100%" }}
-            animate={reducedMotion ? { opacity: 1 } : { y: 0 }}
-            exit={reducedMotion ? { opacity: 0 } : { y: "100%" }}
-            transition={{ duration: reducedMotion ? 0 : 0.35, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed inset-x-0 bottom-0 z-50 h-[85dvh] w-full origin-bottom overflow-hidden rounded-t-3xl border border-border bg-card sm:inset-x-auto sm:bottom-6 sm:right-6 sm:h-[600px] sm:w-[400px] sm:origin-bottom-right sm:rounded-2xl sm:shadow-lg"
+            initial={
+              reducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.4 }
+            }
+            animate={reducedMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
+            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.4 }}
+            transition={{
+              type: reducedMotion ? "tween" : "spring",
+              stiffness: 340,
+              damping: 28,
+              duration: reducedMotion ? 0 : undefined,
+            }}
           >
             <ChatPanel onClose={close} />
           </motion.div>
