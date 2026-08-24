@@ -1,4 +1,4 @@
-import { Fraunces } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
@@ -27,4 +27,11 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-export const fontVariables = `${GeistSans.variable} ${GeistMono.variable} ${fraunces.variable}`;
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  weight: ["500", "700", "800"],
+  display: "swap",
+});
+
+export const fontVariables = `${GeistSans.variable} ${GeistMono.variable} ${fraunces.variable} ${manrope.variable}`;

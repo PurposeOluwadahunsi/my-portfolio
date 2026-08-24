@@ -94,6 +94,7 @@ const config: Config = {
         sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"],
         display: ["var(--font-display)"],
+        manrope: ["var(--font-manrope)"],
       },
       fontSize: {
         /* [fontSize, { lineHeight, letterSpacing, fontWeight }] */
@@ -104,6 +105,10 @@ const config: Config = {
         hero: [
           "clamp(2.25rem, 1.9rem + 1.6vw, 3.75rem)",
           { lineHeight: "1.08", letterSpacing: "-0.025em", fontWeight: "600" },
+        ],
+        headline: [
+          "clamp(2.5rem, 1.6rem + 4.5vw, 6rem)",
+          { lineHeight: "1.05", letterSpacing: "-0.03em", fontWeight: "700" },
         ],
         heading: [
           "clamp(1.5rem, 1.35rem + 0.7vw, 2.25rem)",
