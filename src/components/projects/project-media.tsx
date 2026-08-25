@@ -9,12 +9,19 @@ interface ProjectMediaProps {
   placeholderLabel: string;
 }
 
-// Priority: video > image > placeholder. Replaces project-image.tsx.
 export function ProjectMedia({ image, video, alt, placeholderLabel }: ProjectMediaProps) {
   if (video) {
     return (
       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border">
-        <video src={video} className="h-full w-full object-cover" controls playsInline />
+        <video
+          src={video}
+          className="h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls
+        />
       </div>
     );
   }

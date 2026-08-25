@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
 
 import { heroContent } from "@/constants/hero";
 import { getTransition, fadeUp } from "@/lib/motion";
@@ -45,13 +45,17 @@ export function HeroContent() {
   const staticHeadline = HEADLINE_PREFIX + ROTATING_WORDS[0];
   const displayText = prefersReducedMotion ? staticHeadline : typedText;
 
+  const prefixPart = displayText.slice(0, HEADLINE_PREFIX.length);
+  const wordPart = displayText.slice(HEADLINE_PREFIX.length);
+
   return (
     <div className="flex flex-col items-start text-left">
       <div className="flex w-full items-start justify-between gap-4">
         <h1 className="min-h-[2.6em] font-manrope text-headline text-foreground">
           <span className="sr-only">{staticHeadline}</span>
           <span aria-hidden="true">
-            {displayText}
+            {prefixPart}
+            <span className="text-accent">{wordPart}</span>
             {readyToType && !prefersReducedMotion && (
               <span className="typing-cursor h-[0.9em] align-middle" />
             )}
@@ -89,9 +93,10 @@ export function HeroContent() {
         <div className="mt-6 flex w-full flex-col gap-3 sm:mt-7 sm:w-auto sm:flex-row">
           <a
             href={heroContent.primaryCta.href}
-            className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-7 text-sm font-semibold text-white transition-colors duration-fast hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="group inline-flex h-12 items-center justify-center gap-2 rounded-full border border-accent/50 bg-transparent px-7 text-sm font-semibold text-foreground transition-colors duration-fast hover:border-accent hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {heroContent.primaryCta.label}
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-fast group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
 
           <button

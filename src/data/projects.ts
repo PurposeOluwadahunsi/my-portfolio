@@ -1,9 +1,5 @@
 import type { CaseStudyProject } from "@/types/project";
 
-// NOTE on "learned": these are short, first-person reflections — I've
-// drafted reasonable starting copy, but only you actually know what
-// you learned building each of these. Treat these three lines as
-// drafts to personalize, not finished copy.
 export const projects: CaseStudyProject[] = [
   {
     slug: "dashai",
@@ -11,7 +7,7 @@ export const projects: CaseStudyProject[] = [
     status: "Production",
     tagline: "An AI-powered study platform that turns documents into a real study session.",
     problem:
-      "Studying from raw lecture notes and PDFs is slow students spend more time organizing material than actually learning it, and generic AI chatbots don't understand the specific document in front of them.",
+      "Studying from raw lecture notes and PDFs is slow, students spend more time organizing material than actually learning it, and generic AI chatbots don't understand the specific document in front of them.",
     solution:
       "DashAI is a full-stack study platform built around retrieval-augmented generation: upload your own documents and the AI study assistant answers questions, generates quizzes and flashcards, and runs exam-mode sessions grounded in that specific material. It includes authentication, per-user progress tracking, and a modern responsive UI.",
     impact:
@@ -39,33 +35,55 @@ export const projects: CaseStudyProject[] = [
     impact:
       "A working example of taking an ML model past the notebook stage into a real, deployed tool someone can actually use.",
     learned:
-      "Deploying the model taught me how much of the real work in ML applications happens after the model is trained packaging, interface, and making it reliable for someone else to use.",
+      "Deploying the model taught me how much of the real work in ML applications happens after the model is trained, packaging, interface, and making it reliable for someone else to use.",
     stack: ["Python", "Machine Learning", "Streamlit"],
     featured: false,
-    // No `image` yet — tell me the filename once it's in /public and
-    // I'll wire it in the same way DashAI's is above, e.g.
-    // image: "/malaria.png"
     video: "/Video Project.mp4",
-    imagePlaceholderLabel: "Malaria Diagnosis System",
+    imagePlaceholderLabel: "Replace this placeholder with a Malaria Diagnosis System screenshot",
     links: [{ label: "Live Demo", href: "https://malaria-diagnosis-system.streamlit.app" }],
+  },
+  {
+    slug: "agriguard",
+    name: "AgriGuard",
+    status: "Production",
+    tagline: "AI-powered crop disease detection from leaf images, built as a team capstone.",
+    problem:
+      "Farmers often lack fast, accessible ways to identify crop diseases early, and misdiagnosis or delayed treatment can hurt yields.",
+    solution:
+      "AgriGuard uses fine-tuned ResNet50 models to detect diseases and pests in Cassava and Maize from leaf photos, combining confidence thresholding with energy-based out-of-distribution detection to reduce unreliable predictions. It gives treatment recommendations, preventive measures, and downloadable PDF reports, with a multilingual interface (English, Hausa, Igbo, Yoruba, Swahili, French).",
+    impact:
+      "A practical example of computer vision applied to a real agricultural problem, from model training through a deployed, usable interface.",
+    learned:
+      "Built as a team capstone for TechCrush Cohort 7 working through model validation (confidence + OOD detection) as a team sharpened how I think about making predictions trustworthy, not just accurate.",
+    stack: ["Python", "PyTorch", "Computer Vision", "Streamlit"],
+    image: "/agriguard.png",
+    featured: false,
+    imagePlaceholderLabel: "Replace this placeholder with an AgriGuard screenshot",
+    links: [
+      { label: "Live Demo", href: "https://agriguard-mygeakgwedwkqb7pzwbx5q.streamlit.app" },
+      { label: "GitHub", href: "https://github.com/AgriGuard-TechCrush/AgriGuard" },
+    ],
   },
   {
     slug: "agropulse-ai",
     name: "AgroPulse AI",
-    status: "In Development",
+    status: "Production",
     tagline: "An AI hackathon project for livestock disease identification and farm decision support.",
     problem:
       "Smallholder farmers often lack quick access to veterinary expertise, and early signs of livestock disease can go unnoticed until it's costly.",
     solution:
-      "AgroPulse AI is being built to help identify likely livestock diseases from symptoms and support farm decision-making, currently in active development as part of an AI hackathon.",
+      "AgroPulse AI helps identify likely livestock diseases from symptoms and supports farm decision-making, built as part of an AI hackathon.",
     impact:
-      "Aims to put a first layer of veterinary triage within reach of farmers who need it most.",
+      "Puts a first layer of veterinary triage within reach of farmers who need it most.",
     learned:
-      "Still early here, this project is more about the problem space (agricultural AI) than a finished build yet.",
+      "This project sharpened how I think about applying AI to agricultural problem spaces, not just conventional tech domains.",
     stack: ["Python", "Machine Learning"],
+    image: "/ss1.png",
     featured: false,
-    imagePlaceholderLabel: "AgroPulse AI is still in development",
-    links: [],
+    imagePlaceholderLabel: "Replace this placeholder with an AgroPulse AI screenshot",
+    links: [
+      { label: "GitHub", href: "https://github.com/PurposeOluwadahunsi/agropulse-ai-adtc-2026" },
+    ],
   },
 ];
 
