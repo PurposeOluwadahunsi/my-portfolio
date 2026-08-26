@@ -85,6 +85,35 @@ export const projects: CaseStudyProject[] = [
       { label: "GitHub", href: "https://github.com/PurposeOluwadahunsi/agropulse-ai-adtc-2026" },
     ],
   },
+  {
+  slug: "sutton",
+  name: "Sutton",
+  status: "In Development",
+  tagline: "AI-powered conversational bookkeeping with persistent business memory for informal traders and SMEs.",
+  problem:
+    "Informal traders often manage debts, inventory, and customer information through mental notes, paper records, or scattered WhatsApp conversations, making it easy to lose track of important business information.",
+  solution:
+    "Sutton is a conversational AI bookkeeper that lets traders record business activity naturally through chat. It uses Groq-powered language models to extract debts, inventory changes, and customer information from unstructured messages, then stores those records as persistent memories using Walrus Memory. Traders can later ask questions about previous transactions and Sutton retrieves the relevant information to answer them.",
+  impact:
+    "Demonstrates how persistent AI memory can turn natural conversation into a practical bookkeeping tool for informal businesses, allowing traders to record and retrieve important business information without relying on traditional accounting software.",
+  learned:
+    "Built for the Lagos Walrus Memory x AI Prompt Hackathon, this project strengthened my understanding of AI memory systems, structured information extraction, semantic retrieval, and integrating decentralized storage with conversational AI.",
+  stack: [
+    "Next.js",
+    "TypeScript",
+    "Groq",
+    "Llama",
+    "Walrus Memory",
+    "Vercel"
+  ],
+  featured: false,
+  imagePlaceholderLabel: "Sutton screenshot is unavailable",
+  links: [
+    // Add these after the hackathon
+    // { label: "Live Demo", href: "..." },
+    // { label: "GitHub", href: "..." },
+  ],
+},
 ];
 
 export const featuredProject = projects.find((project) => project.featured)!;

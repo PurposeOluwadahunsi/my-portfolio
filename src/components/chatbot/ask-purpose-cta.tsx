@@ -91,7 +91,7 @@ export function AskPurposeCta() {
             d="M12 26 C 26 42, 12 56, 32 62 C 54 70, 42 44, 64 50 C 84 56, 70 76, 92 82 C 104 86, 110 84, 118 100"
             stroke="currentColor"
             strokeOpacity="0.55"
-            strokeWidth="3"
+            strokeWidth="2"
             strokeLinecap="round"
             initial={{ pathLength: reducedMotion ? 1 : 0 }}
             animate={{ pathLength: 1 }}
