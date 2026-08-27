@@ -14,11 +14,13 @@ interface ChatInputProps {
   disabled?: boolean;
 }
 
+// No border anywhere — just a soft background fill, so there's never
+// a visible "box" outline, focused or not. Only the background shade
+// shifts slightly on focus, kept subtle.
 export function ChatInput({ onSend, disabled }: ChatInputProps) {
   const [value, setValue] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const pickerRef = useRef<HTMLDivElement>(null);
 
   function handleSubmit() {
     const trimmed = value.trim();
@@ -51,8 +53,8 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   }
 
   return (
-    <div className="border-t border-border p-3">
-      <div className="relative flex items-end gap-1.5 rounded-2xl border border-border bg-secondary/50 px-2 py-2 focus-within:border-accent">
+    <div className="p-3">
+      <div className="relative flex items-end gap-1.5 rounded-3xl bg-secondary/60 px-2 py-2 transition-colors duration-fast focus-within:bg-secondary">
         <button
           type="button"
           onClick={() => setShowEmoji((v) => !v)}
@@ -73,9 +75,9 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
             }
           }}
           rows={1}
-          placeholder="Ask about Purpose's work..."
+          placeholder="Message"
           aria-label="Message"
-          className="max-h-32 flex-1 resize-none bg-transparent py-1 text-body-sm text-foreground outline-none placeholder:text-muted-foreground"
+          className="max-h-32 flex-1 resize-none border-0 bg-transparent py-1 text-body-sm text-foreground outline-none ring-0 placeholder:text-muted-foreground focus:outline-none focus:ring-0"
         />
 
         <button
@@ -89,8 +91,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
 
         {showEmoji && (
           <div
-            ref={pickerRef}
-            className="absolute bottom-full left-0 mb-2 grid w-64 grid-cols-8 gap-1 rounded-xl border border-border bg-card p-2 shadow-lg"
+            className="absolute bottom-full left-0 mb-2 grid w-64 grid-cols-8 gap-1 rounded-2xl bg-card p-2 shadow-lg"
             onMouseLeave={() => setShowEmoji(false)}
           >
             {EMOJIS.map((emoji) => (

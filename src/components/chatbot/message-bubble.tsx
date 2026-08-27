@@ -7,6 +7,8 @@ import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ChatMessage } from "@/hooks/use-chat";
 
+// iMessage-style bubbles: solid accent for the user (right, tail
+// bottom-right), soft gray for the assistant (left, tail bottom-left).
 export function MessageBubble({ message }: { message: ChatMessage }) {
   const isUser = message.role === "user";
 
@@ -14,17 +16,29 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
     <div className={cn("flex", isUser ? "justify-end" : "justify-start")}>
       <div
         className={cn(
-          "max-w-[85%] rounded-2xl px-4 py-2.5 text-body-sm",
-          isUser ? "bg-accent text-white" : "border border-border bg-card text-foreground",
+          "relative max-w-[80%] break-words rounded-3xl px-4 py-2.5 text-body-sm",
+          isUser
+            ? "rounded-br-md bg-accent text-white"
+            : "rounded-bl-md bg-secondary text-foreground",
         )}
       >
+        <span
+          aria-hidden="true"
+          className={cn(
+            "absolute bottom-0 h-3 w-3",
+            isUser
+              ? "-right-1 rounded-bl-full bg-accent"
+              : "-left-1 rounded-br-full bg-secondary",
+          )}
+        />
+
         <ReactMarkdown
           components={{
             code({ className, children, ...props }) {
               const isBlock = /language-/.test(className || "");
               if (!isBlock) {
                 return (
-                  <code className="rounded bg-secondary px-1 py-0.5 text-code" {...props}>
+                  <code className="rounded bg-background/20 px-1 py-0.5 text-code" {...props}>
                     {children}
                   </code>
                 );
@@ -41,17 +55,11 @@ export function MessageBubble({ message }: { message: ChatMessage }) {
   );
 }
 
-function CodeBlock({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
+function CodeBlock({ className, children }: { className?: string; children: React.ReactNode }) {
   const [copied, setCopied] = useState(false);
 
   function handleCopy() {
-    navigator.clipboard.writeText(String(children));
+    navigator.clipboard.writeText(String(children)).catch(() => {});
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   }
@@ -65,8 +73,8 @@ function CodeBlock({
       >
         {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
       </button>
-      <pre className={cn("overflow-x-auto p-4 text-code", className)}>
-        <code>{children}</code>
+      <pre className="overflow-x-auto p-4 text-code">
+        <code className={className}>{children}</code>
       </pre>
     </div>
   );

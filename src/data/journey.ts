@@ -27,4 +27,11 @@ export const journey = [
     summary:
       "Used Excel and Python to organize data, produced reports and charts, and supported documentation and daily IT tasks.",
   },
+  {
+  org: "TechCrush",
+  role: "AI/ML Engineering Student",
+  period: "May 2026 - August 2026",
+  summary:
+    "Completed TechCrush Cohort 7 in AI/ML Engineering, gaining practical experience with Python, machine learning, deep learning, computer vision, and model deployment. Collaborated on practical AI projects, including AgriGuard, a crop disease detection system.",
+},
 ];
