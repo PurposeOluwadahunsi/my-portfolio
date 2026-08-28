@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Send, Smile } from "lucide-react";
+import { ArrowUp, Smile } from "lucide-react";
 
 const EMOJIS = [
   "😀", "😂", "🙂", "😉", "😍", "🤔", "😎", "🙌",
@@ -14,9 +14,6 @@ interface ChatInputProps {
   disabled?: boolean;
 }
 
-// No border anywhere — just a soft background fill, so there's never
-// a visible "box" outline, focused or not. Only the background shade
-// shifts slightly on focus, kept subtle.
 export function ChatInput({ onSend, disabled }: ChatInputProps) {
   const [value, setValue] = useState("");
   const [showEmoji, setShowEmoji] = useState(false);
@@ -84,9 +81,9 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
           onClick={handleSubmit}
           disabled={disabled || !value.trim()}
           aria-label="Send message"
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-white transition-opacity duration-fast disabled:opacity-30"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success text-white transition-opacity duration-fast disabled:opacity-30"
         >
-          <Send className="h-4 w-4" />
+          <ArrowUp className="h-4 w-4" strokeWidth={2.5} />
         </button>
 
         {showEmoji && (

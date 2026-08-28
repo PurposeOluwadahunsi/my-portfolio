@@ -8,10 +8,9 @@ import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { FloatingChatButton } from "@/components/chatbot/floating-chat-button";
 import { ChatGreetingCard } from "@/components/chatbot/chat-greeting-card";
 
-// Single fixed wrapper stacking the greeting card above the button in
-// a flex column — no manual pixel math, so they can't drift apart.
-// Greeting appears once ~1.5s after load, auto-dismisses after ~5s,
-// or closes immediately on X / "Start chatting".
+// bottom-24 (not bottom-6) so this sits above the floating dock,
+// which also lives at bottom-6 — same offset the original button
+// used before this got refactored into a wrapper.
 export function ChatLauncher() {
   const { open, openChat } = useChatModal();
   const reducedMotion = useReducedMotion();
@@ -33,7 +32,7 @@ export function ChatLauncher() {
   if (open) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-30 flex flex-col items-end gap-3">
+    <div className="fixed bottom-24 right-6 z-30 flex flex-col items-end gap-3">
       <AnimatePresence>
         {showGreeting && (
           <ChatGreetingCard

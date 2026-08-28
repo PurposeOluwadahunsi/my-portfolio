@@ -88,7 +88,7 @@ export const projects: CaseStudyProject[] = [
   {
   slug: "sutton",
   name: "Sutton",
-  status: "In Development",
+  status: "Production",
   tagline: "AI-powered conversational bookkeeping with persistent business memory for informal traders and SMEs.",
   problem:
     "Informal traders often manage debts, inventory, and customer information through mental notes, paper records, or scattered WhatsApp conversations, making it easy to lose track of important business information.",
@@ -107,11 +107,10 @@ export const projects: CaseStudyProject[] = [
     "Vercel"
   ],
   featured: false,
+  image: "/walrus hackhathon.png",
   imagePlaceholderLabel: "Sutton screenshot is unavailable",
   links: [
-    // Add these after the hackathon
-    // { label: "Live Demo", href: "..." },
-    // { label: "GitHub", href: "..." },
+    { label: "Github", href:"https://github.com/PurposeOluwadahunsi/sutton"},
   ],
 },
 ];

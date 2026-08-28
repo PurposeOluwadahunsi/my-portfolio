@@ -6,4 +6,3 @@ lists, timeline/experience data. Kept separate from `lib` and
 exporting `Project[]` (see `src/types/project.ts`) for
 `components/projects` to render.
 
-Currently empty — populated once real portfolio content is written.

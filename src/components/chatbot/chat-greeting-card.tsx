@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Sparkles, X } from "lucide-react";
+import { ArrowUp, Sparkles, X } from "lucide-react";
 
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
@@ -50,10 +50,10 @@ export function ChatGreetingCard({ onStart, onClose }: ChatGreetingCardProps) {
       <button
         type="button"
         onClick={onStart}
-        className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-accent py-2.5 text-sm font-semibold text-white transition-colors duration-fast hover:bg-accent/90"
+        className="group mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-accent/50 bg-transparent py-2.5 text-sm font-semibold text-foreground transition-colors duration-fast hover:border-accent hover:bg-accent/10"
       >
         Start chatting
-        <Send className="h-4 w-4" />
+        <ArrowUp className="h-4 w-4 -rotate-45 transition-transform duration-fast group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </button>
     </motion.div>
   );

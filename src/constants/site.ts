@@ -6,9 +6,9 @@
  */
 export const siteConfig = {
   name: "Purpose AI",
-  title: "Purpose AI — AI Engineer Portfolio",
+  title: "Purpose AI",
   description:
-    "Purpose AI is the portfolio of an AI engineer, showcasing production-grade machine learning and full-stack engineering work through interactive, thoughtfully designed storytelling.",
+    "Purpose AI is my personal portfolio, showcasing my work in AI engineering, machine learning, and full-stack development through interactive and thoughtfully designed experiences.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ogImage: "/og-image.png",
   keywords: [
@@ -25,7 +25,7 @@ export const siteConfig = {
     url: "",
   },
   links: {
-    // Placeholders — wire up once real profiles exist.
+    // Placeholders wire up once real profiles exist.
     github: "https://github.com/purposeoluwadahunsi",
     linkedin: "https://linkedin.com/in/purposeoluwadahunsi",
     twitter: "",
