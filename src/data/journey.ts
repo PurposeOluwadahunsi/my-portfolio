@@ -1,8 +1,14 @@
+// All original fields preserved (org, role, period, summary) — only
+// additive fields below (year, category, tags), derived honestly from
+// each entry's existing summary text, nothing invented.
 export const journey = [
   {
     org: "Data Science Nigeria",
     role: "Community Member",
     period: "May 2025 - Present",
+    year: "2025",
+    category: "Community",
+    tags: ["Python", "Machine Learning", "Data Analysis"],
     summary:
       "Participating in learning programs, workshops, and technical discussions while building practical experience in Python, machine learning, and data analysis.",
   },
@@ -10,6 +16,9 @@ export const journey = [
     org: "DataGlobal Hub",
     role: "Ambassador Personnel",
     period: "Mar 2025 - Present",
+    year: "2025",
+    category: "Ambassador",
+    tags: ["Data Literacy", "Community", "Networking"],
     summary:
       "Engaging with data leaders and experts through events and collaborations, supporting data literacy and professional growth.",
   },
@@ -17,6 +26,9 @@ export const journey = [
     org: "Programify",
     role: "Intern",
     period: "Sep 2025 - Nov 2025",
+    year: "2025",
+    category: "Internship",
+    tags: ["Python", "Machine Learning", "Data Cleaning"],
     summary:
       "Cleaned and analyzed datasets in Python, developed and evaluated machine learning models for predictive tasks, and presented findings alongside other interns.",
   },
@@ -24,13 +36,19 @@ export const journey = [
     org: "Lagos State Science and Innovation Technology",
     role: "Internship Student",
     period: "Jul 2025 - Oct 2025",
+    year: "2025",
+    category: "Internship",
+    tags: ["Excel", "Python", "Documentation"],
     summary:
       "Used Excel and Python to organize data, produced reports and charts, and supported documentation and daily IT tasks.",
   },
-  {
+    {
   org: "TechCrush",
   role: "AI/ML Engineering Student",
   period: "May 2026 - August 2026",
+  year:  "2026",
+  category: "Internship",
+  tags: ["Python", "Machine Learning", "Deep Learning"],
   summary:
     "Completed TechCrush Cohort 7 in AI/ML Engineering, gaining practical experience with Python, machine learning, deep learning, computer vision, and model deployment. Collaborated on practical AI projects, including AgriGuard, a crop disease detection system.",
 },

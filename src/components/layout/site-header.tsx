@@ -8,7 +8,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur-md">
       <Container className="flex h-20 items-center justify-between">
         <Image
-          src="/logoo.png"
+          src="/logoppp.png"
           alt="Purpose Oluwadahunsi"
           width={160}
           height={44}

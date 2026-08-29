@@ -91,7 +91,7 @@ const config: Config = {
         full: "var(--radius-full)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)"],
+        sans: ["var(--font-manrope)"],
         mono: ["var(--font-geist-mono)"],
         display: ["var(--font-display)"],
         manrope: ["var(--font-manrope)"],

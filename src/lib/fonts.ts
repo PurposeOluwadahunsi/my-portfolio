@@ -1,24 +1,11 @@
 import { Fraunces, Manrope } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 
-/**
- * Centralized font configuration.
- *
- * Two fonts, two jobs:
- *
- * - Geist Sans (UI font) — everything except the hero name/headline.
- *   Neutral, extremely legible at small sizes, already self-hosted
- *   with zero layout shift.
- *
- * - Fraunces (display font) — reserved for the hero name only. Loaded
- *   in full variable mode (no fixed `weight`) so the `opsz` and `SOFT`
- *   axes are available, giving it that warm, confident serif quality
- *   instead of the stereotypical mono/futuristic "AI font" look.
- *
- * Self-hosted via next/font/google at build time — no runtime request
- * to Google's CDN.
- */
+// Manrope is now the single UI/body typeface across the whole site.
+// Fraunces stays, but only for the hero's "Purpose" word (kept as the
+// one deliberate signature detail). Geist Sans has been retired —
+// nothing else referenced its variable directly, so it's a clean
+// removal, not just an unused leftover.
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
@@ -30,8 +17,8 @@ const fraunces = Fraunces({
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
-  weight: ["500", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-export const fontVariables = `${GeistSans.variable} ${GeistMono.variable} ${fraunces.variable} ${manrope.variable}`;
+export const fontVariables = `${GeistMono.variable} ${fraunces.variable} ${manrope.variable}`;
