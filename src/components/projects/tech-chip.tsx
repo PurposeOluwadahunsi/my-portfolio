@@ -1,13 +1,16 @@
+import type { LucideIcon } from "lucide-react";
+
 interface TechChipProps {
   label: string;
+  icon?: LucideIcon;
 }
 
-// Same visual language as the hero's stack chips — small, quiet,
-// no icons or logos. A row of these should read as "informative",
-// not "badge collection."
-export function TechChip({ label }: TechChipProps) {
+// Backward compatible — `icon` is optional so existing calls (project
+// cards) keep working unchanged. Only skills-grid.tsx passes one.
+export function TechChip({ label, icon: Icon }: TechChipProps) {
   return (
-    <span className="rounded-full border border-border px-3 py-1 text-caption text-muted-foreground">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-caption text-muted-foreground">
+      {Icon && <Icon className="h-3 w-3" />}
       {label}
     </span>
   );

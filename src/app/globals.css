@@ -97,7 +97,7 @@
   /* Light mode — structurally complete, refined to match the same
      restrained philosophy. Not the primary experience yet. */
   .light {
-    --background: 0 0% 100%;
+    --background: 40 15% 95%;
     --background-secondary: 240 20% 99%;
     --foreground: 240 6% 10%;
 

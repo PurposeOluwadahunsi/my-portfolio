@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getGroqResponse, type ChatMessage } from "@/lib/groq";
 import { projects } from "@/data/projects";
 import { profile, notebookProjects, faqs } from "@/data/knowledge";
+import { contact } from "@/data/contact";
 
 function buildSystemPrompt(): string {
   const projectLines = projects
@@ -14,6 +15,13 @@ function buildSystemPrompt(): string {
   return `You are Purpose AI, the assistant on ${profile.name}'s portfolio site.
 
 About Purpose: ${profile.role}, ${profile.education}. Focus: ${profile.focus}.
+
+Contact info (share this when asked how to reach Purpose):
+Email: ${contact.email}
+Phone: ${contact.phone}
+GitHub: ${contact.github}
+LinkedIn: ${contact.linkedin}
+Location: ${contact.location}
 
 Deployed/featured projects:
 ${projectLines}

@@ -1,0 +1,37 @@
+import {
+  AppWindow, BarChart3, Bot, Box, Braces, Brain, Cpu, Database,
+  FileCode2, GitBranch, Github, Image as ImageIcon, LineChart,
+  MessageSquare, Palette, Search, Server, Sigma, SlidersHorizontal,
+  Sparkles, Table, Terminal, type LucideIcon,
+} from "lucide-react";
+
+// Generic outline icons (not brand logos — none installed, none needed)
+// mapped per skill for visual texture in the Tech Stack card.
+export const skillIcons: Record<string, LucideIcon> = {
+  Python: Cpu,
+  pandas: Table,
+  numpy: Sigma,
+  "scikit-learn": Brain,
+  NLP: MessageSquare,
+  "CNN (Image Classification)": ImageIcon,
+  "Generative AI": Sparkles,
+  "Prompt Engineering": Terminal,
+  "Model Training": Cpu,
+  "Fine-Tuning & Evaluation": SlidersHorizontal,
+  "Deep Learning": Brain,
+  LLMs: Bot,
+  "Power BI": BarChart3,
+  Excel: Table,
+  SQL: Database,
+  "Data Mining": Search,
+  matplotlib: LineChart,
+  "Next.js": Box,
+  TypeScript: FileCode2,
+  HTML: Braces,
+  CSS: Palette,
+  JavaScript: Braces,
+  Supabase: Server,
+  Git: GitBranch,
+  GitHub: Github,
+  Streamlit: AppWindow,
+};
