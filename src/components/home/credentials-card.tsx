@@ -1,5 +1,5 @@
 import { education, recognition, currentFocus } from "@/data/credentials";
-import { CertificateModal } from "@/components/home/certificate-modal";
+import { CertificateDeck } from "@/components/home/certificate-deck";
 
 export function CredentialsCard() {
   return (
@@ -14,7 +14,7 @@ export function CredentialsCard() {
       <div>
         <p className="text-label uppercase text-muted-foreground">Certifications</p>
         <div className="mt-2">
-          <CertificateModal />
+          <CertificateDeck />
         </div>
       </div>
 
