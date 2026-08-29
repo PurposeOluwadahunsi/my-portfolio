@@ -12,9 +12,6 @@ import { CredentialsCard } from "@/components/home/credentials-card";
 import { staggerContainer } from "@/lib/motion";
 import { journey } from "@/data/journey";
 
-// Accent line overlays the timeline's static gray track and fills in
-// (scaleY tied to scroll progress through this section) as the user
-// scrolls — the "connecting the entries" effect from the reference.
 export function JourneySection() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -33,9 +30,13 @@ export function JourneySection() {
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div ref={timelineRef} className="relative">
+            {/* w-[3px] + bg-foreground matches timeline-item.tsx's
+                border-l-[3px] border-border track exactly, so the
+                overlay sits flush on top of it instead of looking
+                like a separate thin line. */}
             <motion.div
               style={{ scaleY: scrollYProgress }}
-              className="absolute left-0 top-0 h-full w-px origin-top bg-accent"
+              className="absolute left-0 top-0 h-full w-[4px] origin-top bg-foreground"
               aria-hidden="true"
             />
 

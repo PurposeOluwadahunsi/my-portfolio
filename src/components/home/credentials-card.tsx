@@ -1,4 +1,5 @@
-import { education, certifications, recognition, currentFocus } from "@/data/credentials";
+import { education, recognition, currentFocus } from "@/data/credentials";
+import { CertificateModal } from "@/components/home/certificate-modal";
 
 export function CredentialsCard() {
   return (
@@ -12,11 +13,9 @@ export function CredentialsCard() {
 
       <div>
         <p className="text-label uppercase text-muted-foreground">Certifications</p>
-        <ul className="mt-2 space-y-1">
-          {certifications.map((c) => (
-            <li key={c} className="text-body-sm text-muted-foreground">{c}</li>
-          ))}
-        </ul>
+        <div className="mt-2">
+          <CertificateModal />
+        </div>
       </div>
 
       <div>
@@ -30,7 +29,7 @@ export function CredentialsCard() {
           {currentFocus.map((f) => (
             <li key={f.name} className="text-body-sm">
               <span className="font-semibold text-foreground">{f.name}</span>{" "}
-              <span className="text-muted-foreground"> - {f.note}</span>
+              <span className="text-muted-foreground">— {f.note}</span>
             </li>
           ))}
         </ul>
