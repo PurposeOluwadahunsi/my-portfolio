@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Folder, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -9,6 +9,21 @@ import { createPortal } from "react-dom";
 import { certifications } from "@/data/certifications";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
+function FolderGlyph({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 26" fill="currentColor" className={className}>
+      <path d="M2 2a2 2 0 0 1 2-2h8.5a2 2 0 0 1 1.6.8L16 3h12a2 2 0 0 1 2 2v2H2V2z" opacity="0.65" />
+      <path d="M0 7a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V7z" />
+    </svg>
+  );
+}
+
+// The trigger box and the opened deck's container share the same
+// layoutId ("cert-box"). Framer Motion tracks that as one continuous
+// element across the open/close toggle and animates its size/position
+// change automatically (a FLIP-based shared-element transition) — this
+// is what makes it visually "grow out of" the folder's exact spot,
+// instead of a generic fade-in centered on screen.
 export function CertificateDeck() {
   const [open, setOpen] = useState(false);
   const [order, setOrder] = useState(certifications.map((_, i) => i));
@@ -17,9 +32,6 @@ export function CertificateDeck() {
 
   useEffect(() => setMounted(true), []);
 
-  // Explicit undefined guards below instead of non-null assertions —
-  // noUncheckedIndexedAccess in tsconfig means array indexing returns
-  // `number | undefined`, so this satisfies the type without `!`.
   function next() {
     setOrder((prev) => {
       const [first, ...rest] = prev;
@@ -28,7 +40,7 @@ export function CertificateDeck() {
     });
   }
 
-  function prev() {
+  function prevCard() {
     setOrder((prevOrder) => {
       const last = prevOrder[prevOrder.length - 1];
       if (last === undefined) return prevOrder;
@@ -42,7 +54,7 @@ export function CertificateDeck() {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false);
       if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowLeft") prevCard();
     }
     window.addEventListener("keydown", onKeyDown);
     return () => {
@@ -54,32 +66,38 @@ export function CertificateDeck() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="flex w-full items-center gap-3 rounded-xl border border-border p-3 text-left transition-colors duration-fast hover:border-accent"
-      >
-        <motion.div
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-foreground"
-          animate={reducedMotion ? undefined : { rotate: [0, -8, 8, -4, 0] }}
-          transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" }}
-        >
-          <Folder className="h-5 w-5" fill="currentColor" strokeWidth={1} />
-        </motion.div>
-        <div className="flex-1">
-          <p className="text-body-sm font-semibold text-foreground">Certificates</p>
-          <p className="text-caption text-muted-foreground">Tap to view</p>
-        </div>
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-secondary text-caption font-semibold text-foreground">
-          {certifications.length}
-        </span>
-      </button>
+      <AnimatePresence mode="wait">
+        {!open && (
+          <motion.button
+            key="trigger"
+            layoutId="cert-box"
+            type="button"
+            onClick={() => setOpen(true)}
+            transition={{ duration: reducedMotion ? 0 : 0.4, ease: [0.4, 0, 0.2, 1] }}
+            className="flex w-full flex-col items-center gap-3 rounded-xl border border-border bg-card p-6 text-center"
+          >
+            <motion.div
+              animate={reducedMotion ? undefined : { rotate: [0, -8, 8, -4, 0] }}
+              transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" }}
+            >
+              <FolderGlyph className="h-14 w-14 text-foreground" />
+            </motion.div>
+            <div>
+              <p className="text-body-sm font-semibold text-foreground">Certificates</p>
+              <p className="text-caption text-muted-foreground">
+                Tap to open ({certifications.length})
+              </p>
+            </div>
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {mounted &&
         createPortal(
           <AnimatePresence>
             {open && (
               <motion.div
+                key="backdrop"
                 className="fixed inset-0 z-50 flex items-center justify-center p-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -92,17 +110,22 @@ export function CertificateDeck() {
                   aria-hidden="true"
                 />
 
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  aria-label="Close"
-                  className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground"
+                <motion.div
+                  key="deck-box"
+                  layoutId="cert-box"
+                  transition={{ duration: reducedMotion ? 0 : 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  className="relative flex w-full max-w-sm flex-col items-center rounded-2xl border border-border bg-card p-4"
                 >
-                  <X className="h-4 w-4" />
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => setOpen(false)}
+                    aria-label="Close"
+                    className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-foreground"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
 
-                <div className="relative flex w-full max-w-sm flex-col items-center">
-                  <div className="relative h-[380px] w-full">
+                  <div className="relative mt-6 h-[340px] w-full">
                     <AnimatePresence initial={false}>
                       {order.slice(0, 3).map((certIndex, stackPos) => {
                         const cert = certifications[certIndex];
@@ -156,10 +179,10 @@ export function CertificateDeck() {
                     </AnimatePresence>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-4">
+                  <div className="mb-2 mt-6 flex items-center gap-4">
                     <button
                       type="button"
-                      onClick={prev}
+                      onClick={prevCard}
                       aria-label="Previous certificate"
                       className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground"
                     >
@@ -177,10 +200,10 @@ export function CertificateDeck() {
                       <ChevronRight className="h-4 w-4" />
                     </button>
                   </div>
-                  <p className="mt-2 text-caption text-muted-foreground/70 sm:hidden">
+                  <p className="mb-2 text-caption text-muted-foreground/70 sm:hidden">
                     Swipe the card to browse
                   </p>
-                </div>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>,
