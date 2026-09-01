@@ -1,197 +1,580 @@
-# Purpose AI — Foundation
+# Purpose Oluwadahunsi Portfolio
 
-Production-ready foundation for a premium AI Engineer portfolio. This is
-architecture, tooling, theming, SEO, and accessibility scaffolding —
-**no UI sections have been built yet** (no Hero, Navbar, About, Projects).
-That's intentional; see the project brief this was built against.
+A personal portfolio website for Purpose Oluwadahunsi, focused on AI engineering, machine learning, data science, and full-stack development.
 
-## Getting started
+The site is designed to showcase projects, technical experience, skills, certifications, and selected work through a clean and interactive interface.
+
+It also includes a portfolio aware AI assistant that can answer questions about the work presented on the site.
+
+## Live Website
+
+[Visit the portfolio](https://purposeoluwadahunsi.vercel.app)
+
+## About
+
+This portfolio was built to do more than display a list of projects.
+
+It presents the work, the technologies behind it, the learning journey, and the person behind the projects in one place.
+
+The website includes:
+
+- Featured projects and case studies
+- A project collection
+- Experience and learning journey
+- Skills and certifications
+- Resume download and preview
+- Contact information
+- Purpose AI, an AI assistant that can answer questions about the portfolio
+- Responsive navigation and interactions
+- SEO metadata, sitemap, and robots configuration
+
+## Built With
+
+### Frontend
+
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://motion.dev/)
+
+### AI
+
+- [Groq](https://groq.com/)
+- LLM-based portfolio assistant
+- Grounded responses using project and profile data
+
+### Development
+
+- Git
+- GitHub
+- Vercel
+- ESLint
+- Prettier
+
+## Main Features
+
+### Portfolio
+
+The homepage brings together the main parts of the portfolio:
+
+- Introduction
+- Featured projects
+- Other projects
+- Journey and experience
+- Skills
+- Credentials
+- Contact
+
+The content is separated from the UI where possible, which makes it easier to update the portfolio without changing components.
+
+### Purpose AI
+
+Purpose AI is the portfolio's built-in AI assistant.
+
+Visitors can ask questions such as:
+
+- What projects has Purpose built?
+- What is DashAI?
+- What technologies does Purpose use?
+- What is Purpose's background?
+- Why is a particular project private?
+- What areas is Purpose currently focused on?
+
+The assistant uses Groq for model inference and portfolio data as its source of context.
+
+The goal is to make the portfolio easier to explore without replacing the actual content on the website.
+
+### Project Showcase
+
+Projects are presented with different levels of detail depending on their importance.
+
+Featured projects receive larger visual treatment and include information such as:
+
+- The problem
+- What was built
+- Why it matters
+- What was learned
+- Technologies used
+- Project status
+- Available links
+
+Projects shown on the portfolio currently include work such as:
+
+- DashAI
+- Malaria Risk Prediction System
+- AgroPulse AI
+- Car Price Prediction
+- Housing Price Prediction
+- sutton
+- Other data science and machine learning works
+
+Project information is stored separately from the presentation components so it can be updated easily.
+
+### Journey
+
+The Journey section presents education, experience, learning, and current focus in a visual timeline.
+
+The section also uses a sticky stacking card interaction to create a stronger sense of progression while scrolling.
+
+The interaction is built with normal browser positioning and CSS rather than a heavy scrolling library.
+
+### Floating Dock
+
+The site uses a floating navigation dock instead of a traditional top navigation bar.
+
+The dock provides access to:
+
+- Home
+- Projects
+- Journey
+- Purpose AI
+- GitHub
+- LinkedIn
+- Resume
+
+The active section is detected while scrolling so the navigation stays connected to the current page position.
+
+### Contact and Resume
+
+The contact section provides direct access to:
+
+- Email
+- GitHub
+- LinkedIn
+- Location
+- Resume
+
+The resume can be viewed or downloaded directly from the portfolio.
+
+## Project Structure
+
+The project uses the Next.js App Router with the main application inside `src/app`.
+
+```text
+purpose-ai/
+├── public/
+│   ├── resume/
+│   │   └── Purpose-Oluwadahunsi-Resume.pdf
+│   ├── certificate/
+│   └── add your certificates 
+│
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── chat/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   ├── page.tsx
+│   │   ├── robots.ts
+│   │   └── sitemap.ts
+│   │
+│   ├── components/
+│   │   ├── chat/
+│   │   ├── home/
+│   │   ├── layout/
+│   │   ├── projects/
+│   │   └── upload projects
+│   │
+│   ├── constants/
+│   │   └── site.ts
+│   │
+│   ├── data/
+│   │   ├── availability.ts
+│   │   ├── contact.ts
+│   │   ├── credentials.ts
+│   │   ├── journey.ts
+│   │   ├── knowledge.ts
+│   │   ├── projects.ts
+│   │   └── skills.ts
+│   │
+│   ├── hooks/
+│   │   ├── use-active-section.ts
+│   │   └── use-chat.ts
+│   │
+│   ├── lib/
+│   │   ├── fonts.ts
+│   │   ├── groq.ts
+│   │   └── metadata.ts
+│   │
+│   ├── providers/
+│   │   └── providers.tsx
+│   │
+│   ├── types/
+│   │   └── upload types
+│   │
+│   └── styles/
+│
+├── .env.local
+├── next.config.ts
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
+└── README.md
+```
+
+The exact contents can change as the project evolves, but the main idea is to keep:
+
+- Page structure in `src/app`
+- Reusable UI in `src/components`
+- Portfolio content in `src/data`
+- Shared configuration in `src/constants`
+- Utilities and integrations in `src/lib`
+
+## Getting Started
+
+### 1. Fork the repository
+
+Fork this repository to your own GitHub account.
+
+Then clone your fork:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/purpose-ai.git
+```
+
+Move into the project directory:
+
+```bash
+cd purpose-ai
+```
+
+### 2. Install dependencies
 
 ```bash
 npm install
+```
+
+### 3. Set up environment variables
+
+Create a file named:
+
+```text
+.env.local
+```
+
+Add:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+You can get a Groq API key from the [Groq Console](https://console.groq.com/).
+
+Never commit `.env.local` or any API key to GitHub.
+
+### 4. Start the development server
+
+```bash
 npm run dev
 ```
 
-Then add shadcn/ui primitives as needed, e.g.:
+Open:
+
+```text
+http://localhost:3000
+```
+
+The site should now be available locally.
+
+## Make It Your Own
+
+This project can be used as a starting point for your own portfolio.
+
+Most personal content is stored in the `src/data` directory.
+
+### Personal information
+
+Update:
+
+```text
+src/data/contact.ts
+```
+
+This contains information such as your:
+
+- Name
+- Email
+- GitHub
+- LinkedIn
+- Location
+
+### Projects
+
+Update:
+
+```text
+src/data/projects.ts
+```
+
+Add your own projects, technologies, descriptions, statuses, images, videos, and links.
+
+The project components are designed to consume the data, so you should not need to rebuild the project cards for every new project.
+
+### AI knowledge
+
+Update:
+
+```text
+src/data/knowledge.ts
+```
+
+This contains information that Purpose AI can use when answering questions about the portfolio.
+
+When turning this repository into your own portfolio, replace the existing profile and project information with your own.
+
+### Journey
+
+Update:
+
+```text
+src/data/journey.ts
+```
+
+This controls the education, experience, milestones, and other timeline content shown in the Journey section.
+
+### Skills
+
+Update:
+
+```text
+src/data/skills.ts
+```
+
+Add or remove technologies and skills based on your own experience.
+
+### Credentials
+
+Update:
+
+```text
+src/data/credentials.ts
+```
+
+Use this for certifications, training, and other credentials you want to display.
+
+### Availability
+
+Update:
+
+```text
+src/data/availability.ts
+```
+
+This controls the types of opportunities shown in the contact section.
+
+### Site configuration
+
+Update:
+
+```text
+src/constants/site.ts
+```
+
+This contains site-wide information used by the application and SEO metadata.
+
+Examples include:
+
+- Site name
+- Site title
+- Description
+- Website URL
+- Keywords
+- Social links
+
+### SEO
+
+Metadata is generated through:
+
+```text
+src/lib/metadata.ts
+```
+
+The project also includes:
+
+```text
+src/app/robots.ts
+src/app/sitemap.ts
+```
+
+These generate:
+
+```text
+/robots.txt
+/sitemap.xml
+```
+
+When deploying your own version, make sure `NEXT_PUBLIC_SITE_URL` points to your actual website URL.
+
+### Resume
+
+Replace the existing resume with your own file in:
+
+```text
+public/resume/
+```
+
+Then update the filename in the relevant resume component if necessary.
+
+### Images and videos
+
+Project media is stored under `public/`.
+
+Replace the included media with your own project screenshots, images, and videos.
+
+Make sure your file names match the paths used by the project data.
+
+## Using Purpose AI
+
+The AI assistant is implemented with a small server-side API layer.
+
+The main flow is:
+
+```text
+Visitor
+   ↓
+Chat Interface
+   ↓
+/api/chat
+   ↓
+Portfolio Context
+   ↓
+Groq API
+   ↓
+AI Response
+   ↓
+Visitor
+```
+
+The assistant does not need direct access to your API key from the browser.
+
+The Groq API key stays on the server through the environment variable:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+The assistant is also given structured portfolio information so that its answers stay focused on the person and work presented on the site.
+
+When making your own version, update the knowledge and project data before deploying the AI assistant.
+
+## Deployment
+
+The portfolio can be deployed to Vercel.
+
+### Deploy with Vercel
+
+Push your project to GitHub, then import the repository into Vercel.
+
+During setup, add the required environment variables:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
+
+Deploy the project.
+
+Vercel will build and serve the Next.js application automatically.
+
+### Custom domain
+
+After deployment, you can connect your own domain through the Vercel project settings.
+
+After adding the domain, update:
+
+```env
+NEXT_PUBLIC_SITE_URL
+```
+
+to match the live website.
+
+## Available Scripts
+
+Run the development server:
 
 ```bash
-npx shadcn@latest add button card dialog
+npm run dev
 ```
 
-## Scripts
+Create a production build:
 
-| Command                | Purpose                              |
-| ----------------------- | ------------------------------------- |
-| `npm run dev`           | Start dev server (Turbopack)          |
-| `npm run build`         | Production build                      |
-| `npm run start`         | Serve production build                |
-| `npm run lint`          | ESLint                                |
-| `npm run lint:fix`      | ESLint with autofix                   |
-| `npm run format`        | Prettier write                        |
-| `npm run format:check`  | Prettier check (CI-friendly)          |
-| `npm run typecheck`     | `tsc --noEmit`                        |
-
----
-
-## 1. Folder structure
-
-```
-src/
-  app/            Routes, layouts, route-level metadata (App Router)
-  components/
-    ui/           shadcn/ui primitives (Button, Card, Dialog...)
-    layout/       Navbar, Footer, page shell — structural chrome
-    home/         Landing-page-specific sections (Hero, About...)
-    projects/     Project cards, case study layouts
-    chatbot/      Future AI chatbot UI
-    shared/       Cross-feature building blocks (Container, headings)
-  lib/            Pure internal helpers (cn, fonts, metadata builder)
-  hooks/          Reusable client-side hooks
-  types/          Shared TypeScript contracts
-  constants/      Static config (site identity, routes)
-  data/           Static/typed content (projects, skills, timeline)
-  styles/         Non-CSS design tokens (JS/TS mirror for Framer Motion etc.)
-  providers/      Client-side context composition root
-  services/       External integrations (AI chatbot API, analytics)
-public/           Static assets
+```bash
+npm run build
 ```
 
-## 2. Why each folder exists
+Run the production server:
 
-- **`app/`** — Next.js App Router convention. Owns routing, layouts, and
-  route-level metadata. Stays Server-Component-first.
-- **`components/ui`** — the design system's atoms. Domain-agnostic on
-  purpose, so they're trivially reusable and match the shadcn/ui CLI's
-  expected output location (see `components.json`).
-- **`components/layout`** — structural chrome that wraps every page.
-  Separated from `ui` because it's composition, not a primitive.
-- **`components/home` / `components/projects` / `components/chatbot`** —
-  feature-scoped composition. Splitting by feature (not by "big vs
-  small component") keeps each folder's blast radius contained: a
-  chatbot change can't accidentally break the projects grid.
-- **`components/shared`** — the escape valve for the rare component
-  used by 2+ features that isn't generic enough to be a `ui/` atom.
-- **`lib/`** — deterministic, side-effect-free helpers (class merging,
-  font config, metadata building). No network calls belong here.
-- **`hooks/`** — client-only reusable behavior (media queries, reduced
-  motion). Kept separate from `lib` because hooks have React lifecycle
-  semantics `lib` functions don't.
-- **`types/`** — the contracts other layers are built against, defined
-  ahead of content so `data/` and `components/` can target a stable
-  shape instead of inferring types from JSON.
-- **`constants/`** — single-source-of-truth static config (site
-  identity, route paths) so strings aren't duplicated across the app.
-- **`data/`** — actual content, typed against `types/`. Separated from
-  `constants` because this is content that changes often (new
-  projects), not app-wide config.
-- **`styles/`** — the *non-CSS* half of the design token system. Color
-  lives in CSS variables (`app/globals.css`) for Tailwind/shadcn
-  compatibility; anything JS needs directly (motion durations, canvas
-  drawing) lives here as a typed mirror.
-- **`providers/`** — the single client-boundary composition root, so
-  `layout.tsx` can stay a Server Component while still supporting
-  ThemeProvider today and auth/analytics/chat providers later.
-- **`services/`** — outward-facing integration code (future AI chatbot
-  backend, analytics, form submission), isolated from `lib` so
-  "talks to the network" and "pure helper" are never confused.
+```bash
+npm run start
+```
 
-## 3. Packages installed
+Run the linter:
 
-**Runtime**
+```bash
+npm run lint
+```
 
-- `next`, `react`, `react-dom` — framework
-- `next-themes` — dark/light theme switching
-- `geist` — self-hosted Geist font (sans + mono), zero-layout-shift
-- `framer-motion` — animation (installed, not yet used)
-- `lucide-react` — icon set
-- `clsx`, `class-variance-authority`, `tailwind-merge` — the standard
-  shadcn/ui class-composition trio
-- `tailwindcss-animate` — animation utilities shadcn/ui components expect
-- `@radix-ui/react-slot` — required by shadcn/ui's `asChild` pattern
+## Security Notes
 
-**Tooling**
+The Groq API key should never be placed directly in client-side code.
 
-- `typescript`, `@types/*` — typed codebase
-- `tailwindcss`, `postcss`, `autoprefixer` — styling pipeline
-- `eslint`, `eslint-config-next`, `eslint-config-prettier` — linting,
-  with Prettier conflicts disabled
-- `prettier`, `prettier-plugin-tailwindcss` — formatting + automatic
-  Tailwind class sorting
+Use:
 
-## 4. Architecture decisions
+```text
+.env.local
+```
 
-- **Server Components by default.** Only `providers.tsx`,
-  `theme-provider.tsx`, and the two hooks are `"use client"`. Every
-  future component should default to Server and only opt into client
-  when it needs interactivity, browser APIs, or hooks.
-- **Single client boundary at the root.** Rather than scattering
-  `"use client"` across the tree, all client context is composed once
-  in `providers/providers.tsx`. Keeps `layout.tsx` a Server Component.
-- **Dark mode as the default, light mode as a first-class citizen, not
-  an afterthought.** `next-themes` is configured with
-  `defaultTheme="dark"` and `enableSystem={false}` — a deliberate
-  choice (see comment in `theme-provider.tsx`) — while the full
-  `.light` CSS variable set already exists in `globals.css`, so
-  shipping a theme toggle later is a UI-only change.
-- **Color tokens in CSS, everything else mirrored in TypeScript.**
-  Colors live as HSL CSS variables so Tailwind's `hsl(var(--x))`
-  pattern and shadcn/ui theming work out of the box. Non-color tokens
-  (radius, shadow, motion, spacing) are mirrored in `styles/tokens.ts`
-  for JS contexts (Framer Motion, canvas) that can't read Tailwind
-  classes.
-- **Metadata via a builder function, not hardcoded per page.**
-  `buildMetadata()` in `lib/metadata.ts` merges `siteConfig` with
-  optional per-route overrides (`PageSeo`), so every future route gets
-  correct OpenGraph/Twitter/canonical metadata by calling one function.
-- **Self-hosted fonts (`geist` package) instead of `next/font/google`.**
-  No runtime dependency on Google's font CDN; zero layout shift via
-  `next/font`'s built-in `size-adjust` metrics.
-- **Absolute imports via a rich `paths` map**, not just a bare `@/*`,
-  so deep imports like `@/components/ui/button` read cleanly and
-  editors autocomplete correctly.
+for local development and Vercel environment variables for production.
 
-## 5. Future scalability
+Do not commit secrets, API keys, private credentials, or personal environment files to the repository.
 
-- **New feature area (e.g. "blog"):** add
-  `components/blog/`, `data/posts.ts`, `types/post.ts`,
-  `app/blog/[slug]/page.tsx` calling `buildMetadata({ path, title })`.
-  No existing file needs to change.
-- **Chatbot integration:** `services/chat.ts` owns the API client,
-  `components/chatbot/` owns the UI, `providers/providers.tsx` gains a
-  `ChatProvider` if global state is needed — the seams already exist.
-- **Light mode toggle:** purely additive — a `components/layout` toggle
-  button calling `next-themes`' `useTheme()`; no token or provider
-  rework required.
-- **Design system growth:** new shadcn/ui primitives drop into
-  `components/ui` via the CLI (already configured through
-  `components.json`); new color/spacing tokens are CSS-variable edits
-  in one file (`globals.css`), not a grep-and-replace across
-  components, because components only ever consume semantic Tailwind
-  classes.
-- **i18n, analytics, auth:** each is a new provider in
-  `providers/providers.tsx` and, where relevant, a new `services/`
-  file — the composition pattern doesn't need to change shape to
-  accommodate them.
+## Customization Checklist
 
-## 6. Best practices used
+After forking the project, update these areas before deploying:
 
-- Strict TypeScript (`strict`, `noUncheckedIndexedAccess`,
-  `noImplicitOverride`) — catches null/undefined and override bugs at
-  compile time.
-- ESLint (flat config) + `eslint-config-prettier` so linting and
-  formatting never fight each other; Prettier auto-sorts Tailwind
-  classes via `prettier-plugin-tailwindcss`.
-- Semantic HTML in every scaffolded route (`main`, heading hierarchy).
-- Consistent, visible `:focus-visible` ring defined once in
-  `globals.css` rather than per-component.
-- `prefers-reduced-motion` handled at two layers: a global CSS
-  safety-net in `globals.css`, and a `useReducedMotion()` hook for
-  Framer Motion variants to branch on individually.
-- Next.js Image `formats` configured for AVIF/WebP; `optimizePackageImports`
-  set for `lucide-react`/`framer-motion` to keep client bundles lean as
-  the icon/animation surface grows.
-- No secrets committed — `.env.example` documents required variables;
-  real values stay in untracked `.env.local`.
-- Every non-trivial file carries a doc comment explaining **why**, not
-  just what, so the next engineer (or future you) doesn't have to
-  reverse-engineer intent.
+```text
+[ ] Your name
+[ ] Your email
+[ ] GitHub link
+[ ] LinkedIn link
+[ ] Location
+[ ] Projects
+[ ] Project images/videos
+[ ] Skills
+[ ] Experience
+[ ] Education
+[ ] Certifications
+[ ] Resume
+[ ] AI knowledge
+[ ] Site title
+[ ] Site description
+[ ] Site URL
+[ ] Favicon
+[ ] Open Graph image
+[ ] Environment variables
+```
+
+## Why This Repository Is Public
+
+This project is intentionally structured so other developers can learn from it and adapt it.
+
+You are welcome to fork it, change the content, redesign sections, replace the projects, and use the architecture as a starting point for your own portfolio.
+
+The most important part is to make the portfolio your own rather than copying the content unchanged.
+
+## License
+
+This project is available for personal and educational use.
+
+If you fork the project, replace the personal content, images, resume, links, and portfolio information with your own.
+
+## Contact
+
+Purpose Oluwadahunsi
+
+- GitHub: https://github.com/PurposeOluwadahunsi
+- LinkedIn: https://www.linkedin.com/in/purpose-oluwadunsi-43a3a2298
+- Email: oluwadahunsipurpose670@gmail.com
