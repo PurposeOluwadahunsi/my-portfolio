@@ -29,7 +29,7 @@ export function CredentialsCard() {
           {currentFocus.map((f) => (
             <li key={f.name} className="text-body-sm">
               <span className="font-semibold text-foreground">{f.name}</span>{" "}
-              <span className="text-muted-foreground">— {f.note}</span>
+              <span className="text-muted-foreground"> - {f.note}</span>
             </li>
           ))}
         </ul>

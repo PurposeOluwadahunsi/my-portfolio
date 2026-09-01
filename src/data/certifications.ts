@@ -28,4 +28,14 @@ export const certifications: Certification[] = [
     issuer: "Data Science Nigeria",
     image: "/certificates/dd.jpeg",
   },
+      {
+    name: "Artificial Intelligence",
+    issuer: "TechCrush",
+    image: "/certificates/ee.jpeg",
+  },
+      {
+    name: "Career Essentials in Genarative AI",
+    issuer: "Microsoft & Linkedin",
+    image: "/certificates/ff.jpeg",
+  },
 ];
