@@ -14,7 +14,9 @@ import type { PageSeo } from "@/types/seo";
  *   export const metadata = buildMetadata({ title: "Projects", path: "/projects" });
  */
 export function buildMetadata(seo: PageSeo = {}): Metadata {
-  const title = seo.title ? `${seo.title} — ${siteConfig.name}` : siteConfig.title;
+  const title = seo.title
+    ? `${seo.title} — ${siteConfig.name}`
+    : siteConfig.title;
   const description = seo.description ?? siteConfig.description;
   const url = seo.path ? `${siteConfig.url}${seo.path}` : siteConfig.url;
   const ogImage = seo.ogImage ?? siteConfig.ogImage;
@@ -24,12 +26,19 @@ export function buildMetadata(seo: PageSeo = {}): Metadata {
     description,
     keywords: [...siteConfig.keywords],
     metadataBase: new URL(siteConfig.url),
+
     alternates: {
       canonical: url,
     },
+
     robots: seo.noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },
+
+    verification: {
+      google: "XByNohl0F5gilO72bNKcgCxVmNCQOmwcG6HGAJzbx5Y",
+    },
+
     openGraph: {
       title,
       description,
@@ -39,16 +48,17 @@ export function buildMetadata(seo: PageSeo = {}): Metadata {
       locale: "en_US",
       type: "website",
     },
+
     twitter: {
       card: "summary_large_image",
       title,
       description,
       images: [ogImage],
-      // creator: "@handle" — reserved until siteConfig.links.twitter is set.
+      
     },
+
     icons: {
-      // Placeholder mark — swap for a final favicon.ico / apple-touch-icon
-      // set before launch (see public/README.md).
+      
       icon: "/favicon.svg",
     },
   };
