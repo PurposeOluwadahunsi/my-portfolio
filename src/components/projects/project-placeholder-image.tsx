@@ -3,11 +3,7 @@ interface ProjectPlaceholderImageProps {
   aspect?: "video" | "square";
 }
 
-// Stand-in for a real screenshot. Deliberately looks like a
-// placeholder (not a fake mockup) so it's obvious what to replace and
-// where once a real image exists, swap this component out for a
-// plain `next/image` in the parent, following the same pattern used
-// in hero-visual.tsx.
+
 export function ProjectPlaceholderImage({
   label,
   aspect = "video",

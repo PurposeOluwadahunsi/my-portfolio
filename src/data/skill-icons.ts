@@ -5,8 +5,7 @@ import {
   Sparkles, Table, Terminal, type LucideIcon,
 } from "lucide-react";
 
-// Generic outline icons (not brand logos — none installed, none needed)
-// mapped per skill for visual texture in the Tech Stack card.
+
 export const skillIcons: Record<string, LucideIcon> = {
   Python: Cpu,
   pandas: Table,

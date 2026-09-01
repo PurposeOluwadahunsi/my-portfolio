@@ -9,8 +9,7 @@ interface FloatingChatButtonProps {
   onClick: () => void;
 }
 
-// No longer self-positioned — ChatLauncher stacks this in a flex
-// column with the greeting card above it, so positioning lives there.
+
 export function FloatingChatButton({ onClick }: FloatingChatButtonProps) {
   const reducedMotion = useReducedMotion();
 

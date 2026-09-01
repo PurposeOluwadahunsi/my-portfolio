@@ -18,12 +18,7 @@ function FolderGlyph({ className }: { className?: string }) {
   );
 }
 
-// The trigger box and the opened deck's container share the same
-// layoutId ("cert-box"). Framer Motion tracks that as one continuous
-// element across the open/close toggle and animates its size/position
-// change automatically (a FLIP-based shared-element transition) — this
-// is what makes it visually "grow out of" the folder's exact spot,
-// instead of a generic fade-in centered on screen.
+
 export function CertificateDeck() {
   const [open, setOpen] = useState(false);
   const [order, setOrder] = useState(certifications.map((_, i) => i));

@@ -7,7 +7,7 @@
  * to — e.g. Framer Motion transition configs, canvas/SVG drawing,
  * or chart libraries that can't consume CSS variables directly.
  *
- * Nothing here has "real" values yet — these are placeholders that
+ * Nothing here has "real" values yet - these are placeholders that
  * establish the *shape* of the design system ahead of a visual design
  * pass. Keep this file additive-only until real UI work begins.
  */
@@ -34,7 +34,7 @@ export const spacing = {
 } as const;
 
 /**
- * Motion tokens for Framer Motion. Durations/easings only — actual
+ * Motion tokens for Framer Motion. Durations/easings only - actual
  * `variants` objects belong next to the components that use them, not
  * here, to avoid this file becoming a dumping ground.
  */

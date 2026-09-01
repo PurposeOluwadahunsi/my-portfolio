@@ -13,16 +13,7 @@ interface MagneticResult {
   onMouseLeave: () => void;
 }
 
-/**
- * Subtle "magnetic" pull effect for buttons/links: the element nudges
- * a few pixels toward the cursor on hover, then springs back. Used
- * sparingly — primary CTAs only, never on every interactive element.
- *
- * `strength` caps how far the element can travel (in px). Kept small
- * (default 12) on purpose — this should read as precise, not gimmicky.
- *
- * Automatically disabled when the user prefers reduced motion.
- */
+
 export function useMagnetic(strength = 12): MagneticResult {
   const ref = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();

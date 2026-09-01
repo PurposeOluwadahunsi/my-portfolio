@@ -18,8 +18,6 @@ interface JourneyCardProps {
 }
 
 // Sticky-stack chapter card. `top` increases slightly per index so
-// earlier cards peek out from behind later ones as they overlap —
-// that's the whole stacking effect, done with plain CSS sticky, no
 // scroll listener. `rotate` and the deep shadow give the physical,
 // slanted-stack-of-papers look from the reference.
 export function JourneyCard({ role, org, year, category, summary, tags, index }: JourneyCardProps) {

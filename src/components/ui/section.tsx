@@ -10,7 +10,7 @@ export interface SectionProps extends HTMLAttributes<HTMLElement> {
 /**
  * Vertical rhythm wrapper for full-width page sections. Owns consistent
  * top/bottom spacing so individual sections (Hero, About, Projects...)
- * never have to guess their own padding — spacing scales up at larger
+ * never have to guess their own padding spacing scales up at larger
  * breakpoints for the "spacious desktop, native mobile" requirement.
  */
 export function Section({ as: Tag = "section", className, ...props }: SectionProps) {

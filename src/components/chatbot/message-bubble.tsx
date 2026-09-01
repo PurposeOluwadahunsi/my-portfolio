@@ -7,8 +7,7 @@ import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ChatMessage } from "@/hooks/use-chat";
 
-// iMessage-style bubbles: solid accent for the user (right, tail
-// bottom-right), soft gray for the assistant (left, tail bottom-left).
+
 export function MessageBubble({ message }: { message: ChatMessage }) {
   const isUser = message.role === "user";
 

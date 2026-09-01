@@ -2,10 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-// Lightweight IntersectionObserver-based scroll spy. Watches a thin
-// band in the middle of the viewport instead of listening to scroll
-// events, so it only recomputes when a section actually crosses that
-// band, not on every pixel of scroll.
+
 export function useActiveSection(sectionIds: string[]) {
   const [activeId, setActiveId] = useState<string | null>(null);
 

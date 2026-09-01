@@ -9,11 +9,7 @@ import { createPortal } from "react-dom";
 import { certifications } from "@/data/certifications";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
-// Trigger + modal. Centering uses a full-screen flex wrapper
-// (fixed inset-0 flex items-center justify-center) instead of
-// top/left-50%-plus-translate — the same robust pattern already
-// proven in chat-modal.tsx, rather than a second centering technique
-// that behaves inconsistently across viewports/devtools emulation.
+
 export function CertificateModal() {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);

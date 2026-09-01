@@ -3,9 +3,6 @@ import { Terminal } from "lucide-react";
 import { TechChip } from "@/components/projects/tech-chip";
 import { skillGroups } from "@/data/skills";
 import { skillIcons } from "@/data/skill-icons";
-
-// Wrapped in a bordered card with a header row, matching the boxed
-// "TECH STACK" layout from the reference — same border/radius tokens
 // used everywhere else (CredentialsCard, project cards).
 export function SkillsGrid() {
   return (

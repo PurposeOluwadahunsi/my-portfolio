@@ -10,9 +10,7 @@ interface SectionHeadingProps {
   className?: string;
 }
 
-// Shared heading pattern for future sections (Projects, Experience...).
-// Not used by the hero itself — the hero has its own composition — but
-// every section below it should reuse this instead of hand-rolling
+
 // eyebrow/title markup each time.
 export function SectionHeading({
   eyebrow,

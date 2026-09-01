@@ -1,12 +1,12 @@
 import type { Transition, Variants } from "framer-motion";
 
 /**
- * Purpose AI — shared Framer Motion variants (Sprint 1).
+ * Purpose AI - shared Framer Motion variants (Sprint 1).
  *
  * Every animation here exists for a reason: entrances read as
  * "confident, precise" rather than "bouncy, playful". Consumers should
  * always pair these with `useReducedMotion()` (see
- * `src/hooks/use-reduced-motion.ts`) — see `getTransition()` below,
+ * `src/hooks/use-reduced-motion.ts`) - see `getTransition()` below,
  * which returns an instant transition when the user prefers reduced
  * motion, so every variant is reduced-motion-safe by construction.
  *

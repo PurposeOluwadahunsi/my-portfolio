@@ -4,9 +4,7 @@ interface StatusBadgeProps {
   status: ProjectStatus;
 }
 
-// Small status indicator — reused by both the featured project and
-// the secondary cards, so "Production" vs "In Development" always
-// looks the same wherever it appears.
+
 export function StatusBadge({ status }: StatusBadgeProps) {
   const isProduction = status === "Production";
 

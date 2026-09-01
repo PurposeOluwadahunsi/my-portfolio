@@ -37,7 +37,7 @@ export interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof iconButtonVariants> {
   asChild?: boolean;
-  /** Required — icon-only buttons must always have an accessible label. */
+  /** Required icon-only buttons must always have an accessible label. */
   "aria-label": string;
 }
 

@@ -14,10 +14,7 @@ interface FeaturedProjectProps {
   project: CaseStudyProject;
 }
 
-// The DashAI showcase. This is the one project that gets a large,
-// two-column editorial treatment — everything else in the section
-// (see project-card.tsx) is deliberately smaller so this stays the
-// obvious visual anchor.
+
 export function FeaturedProject({ project }: FeaturedProjectProps) {
   const prefersReducedMotion = useReducedMotion();
   const transition = getTransition(prefersReducedMotion);

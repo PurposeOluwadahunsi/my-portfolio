@@ -7,12 +7,7 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   narrow?: boolean;
 }
 
-/**
- * Base horizontal-padding + max-width wrapper used by every section.
- * Mobile-first: padding is smaller by default, steps up at `md`/`lg`
- * (see `--container-padding*` tokens consumed via Tailwind's
- * `container` config in tailwind.config.ts).
- */
+
 export function Container({
   className,
   narrow = false,

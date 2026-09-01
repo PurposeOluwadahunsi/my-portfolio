@@ -18,7 +18,7 @@ interface MobileNavProps {
 // Rendered via a portal straight onto document.body. This matters:
 // the navbar header has `backdrop-blur-md` on it, and any ancestor
 // with a filter/backdrop-filter creates a new containing block for
-// `position: fixed` descendants — so without the portal, this drawer
+// `position: fixed` descendants so without the portal, this drawer
 // would be "fixed" relative to the ~70px-tall header instead of the
 // full viewport, which is what was causing it to render squashed and
 // overlapping the page content instead of as a proper full-height

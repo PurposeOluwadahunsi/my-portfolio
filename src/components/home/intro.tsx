@@ -10,21 +10,7 @@ import { useReducedMotion } from "@/hooks/use-reduced-motion";
 const PHRASE_DURATION_MS = 350;
 const EXIT_DURATION_MS = 400;
 
-/**
- * Full-screen intro sequence, shown once per visitor and never again
- * (see useIntroSeen — the preference persists in localStorage). Total
- * runtime is a hard budget: 4 phrases × 350ms + a 400ms exit fade =
- * 1800ms, matching the brief exactly.
- *
- * If the visitor prefers reduced motion, the intro is skipped
- * entirely — a decorative timed sequence isn't something reduced-
- * motion users are asking to sit through, and skipping it respects
- * that preference more than playing a stripped-down version would.
- *
- * Renders nothing until `hasSeenIntro` resolves from localStorage, so
- * returning visitors never see a flash of the intro before it's
- * dismissed.
- */
+
 export function Intro() {
   const { hasSeenIntro, markIntroSeen } = useIntroSeen();
   const prefersReducedMotion = useReducedMotion();

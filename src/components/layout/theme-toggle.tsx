@@ -4,33 +4,43 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import { IconButton } from "@/components/ui/icon-button";
 
-// Hidden from the navbar for now (see navbar.tsx) since the product
-// direction is dark-only at launch, but the toggle itself is fully
-// functional — flip the flag in navbar.tsx when light mode ships.
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // next-themes can't know the resolved theme until after hydration,
-  // so we avoid rendering the wrong icon for a split second.
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <IconButton aria-label="Toggle theme" className="opacity-0" />;
+    return <div className="h-9 w-[72px] rounded-full bg-secondary" aria-hidden="true" />;
   }
 
   const isDark = resolvedTheme === "dark";
 
   return (
-    <IconButton
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-    >
-      {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-    </IconButton>
+    <div className="flex items-center gap-0.5 rounded-full border border-border bg-secondary p-1">
+      <button
+        type="button"
+        onClick={() => setTheme("light")}
+        aria-label="Switch to light theme"
+        aria-pressed={!isDark}
+        className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors duration-fast ${
+          !isDark ? "bg-card text-foreground shadow-sm" : "text-muted-foreground"
+        }`}
+      >
+        <Sun className="h-4 w-4" />
+      </button>
+      <button
+        type="button"
+        onClick={() => setTheme("dark")}
+        aria-label="Switch to dark theme"
+        aria-pressed={isDark}
+        className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors duration-fast ${
+          isDark ? "bg-card text-foreground shadow-sm" : "text-muted-foreground"
+        }`}
+      >
+        <Moon className="h-4 w-4" />
+      </button>
+    </div>
   );
 }

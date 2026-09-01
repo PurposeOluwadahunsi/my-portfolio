@@ -6,9 +6,7 @@ interface ProjectLinksProps {
   links: ProjectLink[];
 }
 
-// Renders whatever links a project actually has. An empty array (like
-// AgroPulse AI, which isn't ready to be linked to at all) renders
-// nothing — no fake "Coming Soon" button for a project this early.
+
 export function ProjectLinks({ links }: ProjectLinksProps) {
   if (links.length === 0) return null;
 

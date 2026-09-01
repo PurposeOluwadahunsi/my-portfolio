@@ -4,11 +4,7 @@ import { HeroVisual } from "@/components/home/hero-visual";
 import { ScrollIndicator } from "@/components/home/scroll-indicator";
 import { Container } from "@/components/ui/container";
 
-// No forced min-height here anymore — a full-viewport-height section
-// only makes sense when the content actually needs that much room.
-// With this shorter content, forcing 100vh just centers everything
-// and leaves a large gap above/below on tall screens. Padding alone
-// gives a comfortable, intentional amount of breathing room instead.
+
 export function Hero() {
   return (
     <section id="hero" className="relative flex items-center overflow-hidden">

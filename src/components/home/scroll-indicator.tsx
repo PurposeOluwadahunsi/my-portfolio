@@ -4,11 +4,7 @@ import { motion } from "framer-motion";
 
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
-/**
- * A single soft vertical line that gently pulses downward. No mouse
- * icon, no arrow, no text — the motion itself is the invitation.
- * Absolutely still (a static line) when reduced motion is preferred.
- */
+
 export function ScrollIndicator() {
   const prefersReducedMotion = useReducedMotion();
 

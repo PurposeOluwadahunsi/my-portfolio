@@ -2,14 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/**
- * Purpose AI — Design Token Layer (Sprint 1)
- *
- * A refined, dark-first palette. No bright saturated colors — every hue
- * here is desaturated and low-contrast against its neighbors on purpose,
- * so nothing fights for attention. Accent is a muted blue-violet used
- * sparingly (links, focus rings, primary actions, gradient text).
- */
+
 @layer base {
   :root {
     /* ---- Radius scale ---- */
@@ -19,9 +12,6 @@
     --radius-xl: 1.5rem;
     --radius-full: 9999px;
 
-    /* ---- Elevation / shadow scale ----
-       Extremely subtle — premium dark UIs read depth mostly through
-       border + background-layering, not heavy drop shadows. */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
     --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.35);
     --shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.45);
@@ -94,8 +84,7 @@
     --selection: 221 45% 64%;
   }
 
-  /* Light mode — structurally complete, refined to match the same
-     restrained philosophy. Not the primary experience yet. */
+  
   .light {
     --background: 40 15% 95%;
     --background-secondary: 240 20% 99%;

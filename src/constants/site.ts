@@ -1,17 +1,20 @@
+import { contact } from "@/data/contact";
+
 /**
  * Single source of truth for site-wide identity and SEO inputs.
- * Every metadata field (root layout, OpenGraph, Twitter cards, JSON-LD
- * once added) should read from here rather than hardcoding strings —
- * keeps rebranding or domain changes to a one-file edit.
+ * Contact-specific values (github/linkedin/email) are pulled from
+ * data/contact.ts rather than duplicated here, so there's exactly
+ * one place that can go stale.
  */
 export const siteConfig = {
-  name: "Purpose AI",
-  title: "Purpose AI",
+  name: "Purpose Oluwadahunsi",
+  title: "Purpose Oluwadahunsi - AI Engineer",
   description:
-    "Purpose AI is my personal portfolio, showcasing my work in AI engineering, machine learning, and full-stack development through interactive and thoughtfully designed experiences.",
+    "Purpose Oluwadahunsi's portfolio - AI engineering, machine learning, and full-stack development, showcased through interactive, thoughtfully designed experiences.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ogImage: "/og-image.png",
   keywords: [
+    "Purpose Oluwadahunsi",
     "AI Engineer",
     "Machine Learning Engineer",
     "Software Engineer Portfolio",
@@ -20,16 +23,14 @@ export const siteConfig = {
     "Next.js Portfolio",
   ],
   author: {
-    name: "Purpose AI",
-    // Reserved for future use (JSON-LD Person schema, footer, contact card).
+    name: "Purpose Oluwadahunsi",
     url: "",
   },
   links: {
-    // Placeholders wire up once real profiles exist.
-    github: "https://github.com/purposeoluwadahunsi",
-    linkedin: "https://linkedin.com/in/purposeoluwadahunsi",
+    github: contact.github,
+    linkedin: contact.linkedin,
     twitter: "",
-    email: "",
+    email: contact.email,
   },
 } as const;
 

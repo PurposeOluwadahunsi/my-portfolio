@@ -14,10 +14,7 @@ interface ProjectCardProps {
   project: CaseStudyProject;
 }
 
-// Secondary project treatment — noticeably more compact than
-// FeaturedProject: one condensed sentence instead of four case-study
-// points, fewer tech chips, smaller image. On purpose, so these never
-// visually compete with DashAI.
+
 export function ProjectCard({ project }: ProjectCardProps) {
   const prefersReducedMotion = useReducedMotion();
   const transition = getTransition(prefersReducedMotion);

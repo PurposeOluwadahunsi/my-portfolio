@@ -18,12 +18,12 @@ export interface CaseStudyProject {
   /** A short, personal reflection — see the note in data/projects.ts. */
   learned: string;
   stack: string[];
-  /** Only one project should be featured at a time — it gets the large layout. */
+  /** Only one project should be featured at a time - it gets the large layout. */
   featured: boolean;
   video?: string;
   /**
    * Path to a real screenshot in /public, e.g. "/dashhh.png". Leave
-   * unset to fall back to the dashed placeholder box — see
+   * unset to fall back to the dashed placeholder box - see
    * ProjectImage, which handles this switch automatically.
    */
   image?: string;

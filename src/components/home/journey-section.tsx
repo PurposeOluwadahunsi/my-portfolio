@@ -6,9 +6,7 @@ import { SkillsGrid } from "@/components/home/skills-grid";
 import { CredentialsCard } from "@/components/home/credentials-card";
 import { journey } from "@/data/journey";
 
-// No "use client" needed here — the sticky-stack effect is plain CSS
-// (position: sticky), and the only client-side hook (useReducedMotion)
-// now lives inside JourneyCard itself. Server Component by default.
+
 export function JourneySection() {
   return (
     <Section id="journey">

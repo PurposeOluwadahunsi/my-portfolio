@@ -1,6 +1,4 @@
-// All original fields preserved (org, role, period, summary) — only
-// additive fields below (year, category, tags), derived honestly from
-// each entry's existing summary text, nothing invented.
+
 export const journey = [
   {
     org: "Data Science Nigeria",

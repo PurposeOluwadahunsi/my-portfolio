@@ -4,17 +4,7 @@ import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "purpose-ai-intro-seen";
 
-/**
- * Tracks whether the visitor has already seen the opening intro.
- *
- * Returns `null` on the very first render (before we've had a chance
- * to check localStorage) so the intro never flashes on screen for a
- * returning visitor before disappearing callers should treat `null`
- * as "not decided yet" and render nothing until it resolves.
- *
- * `markIntroSeen()` persists the preference. `resetIntroSeen()` is
- * exported for a future settings page to offer an intro replay.
- */
+
 export function useIntroSeen() {
   const [hasSeenIntro, setHasSeenIntro] = useState<boolean | null>(null);
 
