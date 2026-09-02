@@ -72,7 +72,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
             }
           }}
           rows={1}
-          placeholder="Message"
+          placeholder="Ask me anything..."
           aria-label="Message"
           className="max-h-32 flex-1 resize-none border-0 bg-transparent py-1 text-body-sm text-foreground outline-none ring-0 placeholder:text-muted-foreground focus:outline-none focus:ring-0"
         />
