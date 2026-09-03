@@ -72,9 +72,12 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
             }
           }}
           rows={1}
-          placeholder="Ask me anything..."
+          placeholder="Ask me about Purpose..."
           aria-label="Message"
-          className="max-h-32 flex-1 resize-none border-0 bg-transparent py-1 text-body-sm text-foreground outline-none ring-0 placeholder:text-muted-foreground focus:outline-none focus:ring-0"
+          // text-[16px] on mobile prevents iOS Safari's auto-zoom on
+          // focus (it triggers below 16px); sm:text-body-sm restores
+          // the original desktop size exactly as it was.
+          className="max-h-32 flex-1 resize-none border-0 bg-transparent py-1 text-[16px] text-foreground outline-none ring-0 placeholder:text-muted-foreground focus:outline-none focus:ring-0 sm:text-body-sm"
         />
 
         <button
