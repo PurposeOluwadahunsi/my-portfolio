@@ -10,7 +10,7 @@ import type { ComponentProps } from "react";
  * mode is fully wired and just one class away — see the `.light`
  * overrides in `globals.css`. Key choices:
  *
- * - `defaultTheme="dark"`  dark is the brand default, not a guess based
+ * - `defaultTheme="light"`  light is the brand default, not a guess based
  *   on OS preference.
  * - `enableSystem={false}` deliberate. We don't want the site to
  *   silently flip to light for a subset of first-time visitors; theme
@@ -29,7 +29,7 @@ export function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="light"
       enableSystem={false}
       disableTransitionOnChange
       {...props}
